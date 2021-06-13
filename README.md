@@ -13,6 +13,12 @@ Server = https://github.com/adig-pkgs/$repo/raw/master/$arch
 > Note: Currently this repo contains 64-bit packages only.
 > So, if you want to you can just take the PKGBUILD from the respective repo, and run `makepkg -si` to install it.
 
+### Building using PKGBUILD
+
+This is the **recommended** way for binary packages, since the packages included here are quite small in size in fact.
+
+Checkout the #Packages section, and visit or git clone the links given, containing the PKGBUILDs.
+
 ### Packages
 
 Currently, this repo contains these packages:

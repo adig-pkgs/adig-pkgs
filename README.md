@@ -28,6 +28,7 @@ Currently, this repo contains these packages:
 * [worldlinesim-git](https://github.com/adig-pkgs/worldlinesim-git)
 * [cpproj-git](https://github.com/adig-pkgs/cpproj-git)
 * [simplecpp-git](https://github.com/adig-pkgs/simplecpp-git)
+* [just-fast-git](https://github.com/adig-pkgs/just-fast-git)
 * [ludo-the-game-git](https://github.com/adig-pkgs/ludo-the-game-git)
 
 You can visit the respective repo to get the PKGBUILD.

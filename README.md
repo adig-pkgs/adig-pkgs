@@ -4,10 +4,12 @@ This is a custom repository of packages (similar to Arch User Repositories)
 
 To use this repositories and install/update packages from this repo, add these lines to the end of `/etc/pacman.conf`:
 
+> ONLY FOR THIS BRANCH (TEMPORARY BRANCH)
+
 ```
 [adig-pkgs]
 SigLevel = Optional DatabaseOptional
-Server = https://github.com/adig-pkgs/$repo/raw/master/$arch
+Server = https://github.com/adig-pkgs/$repo/raw/test_branch/$arch
 ```
 
 > Note: Currently this repo contains 64-bit packages only.

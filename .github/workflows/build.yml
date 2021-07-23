@@ -13,7 +13,7 @@ env:
   GIT_BRANCH: gh-pages
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     container:
       image: archlinux:base-devel
@@ -39,6 +39,19 @@ jobs:
       - run: ./action.sh initialize
       - run: ./action.sh fetch_n_build ${{ matrix.package }}
         continue-on-error: true
+      - uses: actions/upload-artifact@v2
+        with:
+          name: artifact-${{ matrix.package }}
+          path: ${{ env.PKGS_DIR }}
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:base-devel
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          path: ${{ env.PKGS_DIR }}
       - uses: actions/checkout@v2
         with:
           ref: ${{ env.GIT_BRANCH }}

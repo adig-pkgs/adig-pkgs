@@ -1,0 +1,49 @@
+name: package
+
+on:
+  push:
+  schedule:
+    - cron: 0 6 * * * # Run at about 11:30 PM Indian Standard Time
+
+env:
+  BUILD_ROOT_DIR: /tmp/builder
+  PKGS_DIR: /tmp/__pkgs__
+  CCACHE_DIR: /tmp/ccache
+  GIT_REMOTE: https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git
+  GIT_BRANCH: gh-pages
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:base-devel
+    strategy:
+      matrix:
+        packages:
+          ftxui-git
+          graphmat-git
+          run-git 
+          just-fast-git
+          worldlinesim-git
+          ludo-the-game-git 
+          cpproj-git
+          simplecpp-git
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          key: cache-${{ matrix.package }}
+          path: |
+            ${{ format("{0}/{1}",env.BUILD_DIR_ROOT,matrix.package }}
+            ${{ env.CCACHE_DIR }}
+      - run: ./action.sh initialize
+      - run: ./action.sh fetch_n_build ${{ matrix.package}}
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ env.GIT_BRANCH }}
+          path: ${{ env.GIT_BRANCH }}
+          fetch-depth: 0
+      - run: ./action.sh verify_packages
+        continue-on-error: true
+      - run: ./action.sh publish
+

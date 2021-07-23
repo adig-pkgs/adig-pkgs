@@ -21,6 +21,8 @@ Checkout the #Packages section, and visit or git clone the links given, containi
 
 ### Packages
 
+- [x86_64](https://github.com/adig-pkgs/adig-pkgs/tree/gh-pages/x86_64)
+
 Currently, this repo contains these packages:
 
 * [ftxui-git](https://github.com/adig-pkgs/ftxui-git)

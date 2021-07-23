@@ -19,7 +19,7 @@ jobs:
       image: archlinux:base-devel
     strategy:
       matrix:
-        packages:
+        package:
           - ftxui-git
           - graphmat-git
           - run-git 
@@ -34,10 +34,11 @@ jobs:
         with:
           key: cache-${{ matrix.package }}
           path: |
-            ${{ format("{0}/{1}",env.BUILD_DIR_ROOT,matrix.package }}
+            ${{ env.BUILD_DIR_ROOT }}/${{ matrix.package }}
             ${{ env.CCACHE_DIR }}
       - run: ./action.sh initialize
-      - run: ./action.sh fetch_n_build ${{ matrix.package}}
+      - run: ./action.sh fetch_n_build ${{ matrix.package }}
+        continue-on-error: true
       - uses: actions/checkout@v2
         with:
           ref: ${{ env.GIT_BRANCH }}

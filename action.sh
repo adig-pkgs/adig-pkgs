@@ -1,7 +1,6 @@
 #!/bin/bash
 
-ARCH=x86_64:q
-:wq
+ARCH=x86_64
 
 MAKEFLAGS="-j(nproc)"
 
@@ -40,14 +39,18 @@ initialize() {
 fetch_n_build() {
 	export MAKEFLAGS="-j$(nproc)"
 
-	mkdir -pv $BUILD_DIR_ROOT $PKGS_DIR
+	mkdir -pv $BUILD_DIR_ROOT $PKGS_DIR/x86_64/
+	cd $BUILD_DIR_ROOT
 
 	PACKAGE=$1
 	echo Package to build is :$PACKAGE
 	git clone https://github.com/adig-pkgs/$PACKAGE "$BUILD_DIR_ROOT/$PACKAGE" --depth=1
-
+	
+	pushd $PACKAGE
+	chown -R "${BUILD_USER}":"${BUILD_USER}" .
 	sudo -u "${BUILD_USER}" makepkg -sfr --noconfirm --needed
 	cp -v *.pkg.tar.zst "${PKGS_DIR}/x86_64/"
+	popd
 }
 
 publish() {

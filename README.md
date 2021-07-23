@@ -1,21 +1,21 @@
 # adig-pkgs
 
-This is a custom repository of packages (similar to Arch User Repositories)
+This is a custom repository of packages (similar to Arch Repositories, extra, community, etc.)
 
-To use this repositories and install/update packages from this repo, add these lines to the end of `/etc/pacman.conf`:
+## Usage
+To install/update packages from this repo, add these lines to your `/etc/pacman.conf`:
 
 ```
 [adig-pkgs]
-SigLevel = Optional DatabaseOptional
+SigLevel = Optional
 Server = https://github.com/adig-pkgs/$repo/raw/master/$arch
 ```
 
-> Note: Currently this repo contains 64-bit packages only.
-> So, if you want to you can just take the PKGBUILD from the respective repo, and run `makepkg -si` to install it.
+Then just use pacman, as you normally do, for eg. `pacman -Sy worldlinesim-git`
 
 ### Building using PKGBUILD
 
-This is the **recommended** way for binary packages, since the packages included here are quite small in size in fact.
+> Note that the packages in this repo are always up to date, being built by Github Actions daily
 
 Checkout the #Packages section, and visit or git clone the links given, containing the PKGBUILDs.
 

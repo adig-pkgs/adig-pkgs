@@ -20,14 +20,14 @@ jobs:
     strategy:
       matrix:
         packages:
-          ftxui-git
-          graphmat-git
-          run-git 
-          just-fast-git
-          worldlinesim-git
-          ludo-the-game-git 
-          cpproj-git
-          simplecpp-git
+          - ftxui-git
+          - graphmat-git
+          - run-git 
+          - just-fast-git
+          - worldlinesim-git
+          - ludo-the-game-git 
+          - cpproj-git
+          - simplecpp-git
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2

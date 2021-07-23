@@ -18,7 +18,7 @@ GITHUB_REPO_OWNER=${GITHUB_REPOSITORY%/*}
 ARCH_REPO_NAME=adig-pkgs
 
 verify_packages() {
-	cd "$PKGS_DIR/x86_64"
+	cd "$PKGS_DIR"
 	pacman -Sy namcap --noconfirm
 	for PACKAGE in $(find . -name "*.pkg.tar.zst"); do
 		echo "For "$PACKAGE" :"

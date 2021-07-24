@@ -8,7 +8,7 @@ To install/update packages from this repo, add these lines to your `/etc/pacman.
 ```
 [adig-pkgs]
 SigLevel = Optional
-Server = https://github.com/adig-pkgs/$repo/raw/master/$arch
+Server = https://github.com/adig-pkgs/$repo/raw/gh-pages/$arch
 ```
 
 Then just use pacman, as you normally do, for eg. `pacman -Sy worldlinesim-git`

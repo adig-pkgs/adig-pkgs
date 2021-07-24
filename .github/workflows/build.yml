@@ -57,6 +57,7 @@ jobs:
           ref: ${{ env.GIT_BRANCH }}
           path: ${{ env.GIT_BRANCH }}
           fetch-depth: 0
+      - run: find .
       - run: ./action.sh verify_packages
         continue-on-error: true
       - run: pacman -S git --noconfirm
